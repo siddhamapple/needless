@@ -12,7 +12,7 @@ must justify its existence.
 Five tasks, three models, five runs per cell, median reported.
 Baseline: no instructions. Needless: ruleset injected as system prompt.
 
-**[View the full interactive benchmark chart](assets/benchmark.html)**
+**[View the full interactive benchmark chart](https://siddhamapple.github.io/needless/assets/benchmark.html)**
 
 | Task | Haiku 3.5 (base) | Haiku 3.5 (needless) | Sonnet 4.5 (base) | Sonnet 4.5 (needless) | GPT-4o mini (base) | GPT-4o mini (needless) |
 |---|---:|---:|---:|---:|---:|---:|
