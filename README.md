@@ -1,6 +1,20 @@
+<div align="center">
+
+<img src="assets/needless.png" alt="Needless" width="220" />
+
 # Needless
 
-> If you are about to write it, it is probably needless. Prove otherwise.
+*If you are about to write it, it is probably needless. Prove otherwise.*
+
+![release](https://img.shields.io/badge/release-v1.0.0-black) ![works with](https://img.shields.io/badge/works%20with-10%20agents-black) ![license](https://img.shields.io/badge/license-MIT-black)
+
+**80–91% less code · 3–6× faster · significantly cheaper**
+
+Median of 5 tasks across Haiku, Sonnet, and GPT-4o mini. [Reproduce it yourself.](#numbers)
+
+</div>
+
+---
 
 Makes your AI agent default to the minimum code that actually works. Every line
 must justify its existence.
