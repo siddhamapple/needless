@@ -1,0 +1,7 @@
+description = "Switch needless intensity level (lite/full/ultra/off)"
+prompt = """Switch to needless {{args}} mode. If no level specified, use full.
+Minimal-code mode: before any code, stop at the first rung that holds --
+does it need to exist at all (YAGNI)? Does the standard library do it?
+A native platform feature? Can it be one line? Build the minimum that works.
+No unrequested abstractions, no avoidable dependencies, no boilerplate.
+Mark intentional simplifications with a needless: comment."""

@@ -1,0 +1,12 @@
+{
+  "name": "needless",
+  "version": "1.0.0",
+  "description": "Makes your AI agent default to the minimum code that works. Every line must justify its existence.",
+  "keywords": ["ai-agents", "yagni", "minimal-code", "developer-tools", "cursor-rules", "copilot", "claude"],
+  "homepage": "https://github.com/siddhamapple/needless",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siddhamapple/needless.git"
+  },
+  "license": "MIT"
+}
