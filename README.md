@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/needless.png" alt="Needless" width="220" />
+<img src="assets/needless.png" alt="Needless" width="380" />
 
 # Needless
 
