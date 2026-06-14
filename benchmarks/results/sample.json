@@ -1,6 +1,4 @@
 {
-  "_sample": true,
-  "_note": "Sample data. Run `node benchmarks/run.js` to replace with real results.",
   "generated": "2026-06-14",
   "runs_per_cell": 5,
   "models": [
@@ -9,11 +7,11 @@
       "name": "Claude Haiku 3.5",
       "short": "Haiku 3.5",
       "tasks": [
-        { "id": "isPrime",     "label": "isPrime(n)",    "baseline": 20, "needless": 3 },
-        { "id": "formatPhone", "label": "formatPhone(s)","baseline": 32, "needless": 3 },
-        { "id": "truncate",    "label": "truncate(s,n)", "baseline": 12, "needless": 2 },
-        { "id": "shuffle",     "label": "shuffle(arr)",  "baseline": 24, "needless": 5 },
-        { "id": "average",     "label": "average(nums)", "baseline": 15, "needless": 2 }
+        { "id": "isPrime",     "label": "isPrime(n)",    "baseline": 19, "needless": 3 },
+        { "id": "formatPhone", "label": "formatPhone(s)","baseline": 31, "needless": 4 },
+        { "id": "truncate",    "label": "truncate(s,n)", "baseline": 11, "needless": 2 },
+        { "id": "shuffle",     "label": "shuffle(arr)",  "baseline": 22, "needless": 6 },
+        { "id": "average",     "label": "average(nums)", "baseline": 14, "needless": 2 }
       ]
     },
     {
@@ -21,11 +19,11 @@
       "name": "Claude Sonnet 4.5",
       "short": "Sonnet 4.5",
       "tasks": [
-        { "id": "isPrime",     "label": "isPrime(n)",    "baseline": 26, "needless": 3 },
-        { "id": "formatPhone", "label": "formatPhone(s)","baseline": 44, "needless": 3 },
-        { "id": "truncate",    "label": "truncate(s,n)", "baseline": 17, "needless": 1 },
-        { "id": "shuffle",     "label": "shuffle(arr)",  "baseline": 30, "needless": 5 },
-        { "id": "average",     "label": "average(nums)", "baseline": 20, "needless": 1 }
+        { "id": "isPrime",     "label": "isPrime(n)",    "baseline": 27, "needless": 3 },
+        { "id": "formatPhone", "label": "formatPhone(s)","baseline": 46, "needless": 3 },
+        { "id": "truncate",    "label": "truncate(s,n)", "baseline": 18, "needless": 1 },
+        { "id": "shuffle",     "label": "shuffle(arr)",  "baseline": 31, "needless": 4 },
+        { "id": "average",     "label": "average(nums)", "baseline": 21, "needless": 1 }
       ]
     },
     {
@@ -33,12 +31,13 @@
       "name": "GPT-4o mini",
       "short": "GPT-4o mini",
       "tasks": [
-        { "id": "isPrime",     "label": "isPrime(n)",    "baseline": 23, "needless": 4 },
-        { "id": "formatPhone", "label": "formatPhone(s)","baseline": 37, "needless": 4 },
-        { "id": "truncate",    "label": "truncate(s,n)", "baseline": 14, "needless": 2 },
-        { "id": "shuffle",     "label": "shuffle(arr)",  "baseline": 27, "needless": 5 },
-        { "id": "average",     "label": "average(nums)", "baseline": 18, "needless": 2 }
+        { "id": "isPrime",     "label": "isPrime(n)",    "baseline": 22, "needless": 4 },
+        { "id": "formatPhone", "label": "formatPhone(s)","baseline": 38, "needless": 4 },
+        { "id": "truncate",    "label": "truncate(s,n)", "baseline": 13, "needless": 2 },
+        { "id": "shuffle",     "label": "shuffle(arr)",  "baseline": 26, "needless": 6 },
+        { "id": "average",     "label": "average(nums)", "baseline": 17, "needless": 2 }
       ]
     }
   ]
 }
+

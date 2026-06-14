@@ -1,6 +1,8 @@
 'use strict';
-// Runs the 5 benchmark tasks against 3 models (baseline vs needless).
-// Usage: ANTHROPIC_API_KEY=... [OPENAI_API_KEY=...] node benchmarks/run.js
+// Runs benchmark tasks against any models you specify.
+// Usage: node benchmarks/run.js [model-id ...]
+// Example: node benchmarks/run.js claude-haiku-3-5-20241022 gpt-4o gemini-1.5-flash
+// If no model IDs given, uses MODELS env var or the default three.
 // needless: uses fetch directly, no SDK
 
 require('dotenv').config({ path: '.env' });
@@ -20,11 +22,38 @@ Before writing code, stop at the first rung that holds:
 5. Only then: the minimum that works
 No classes unless asked. No abstractions. No boilerplate. Shortest correct code only.`;
 
-const MODELS = [
-  { id: 'claude-haiku-3-5-20241022',   short: 'Haiku 3.5',   name: 'Claude Haiku 3.5',   api: 'anthropic', key: 'ANTHROPIC_API_KEY' },
-  { id: 'claude-sonnet-4-5-20251201',  short: 'Sonnet 4.5',  name: 'Claude Sonnet 4.5',  api: 'anthropic', key: 'ANTHROPIC_API_KEY' },
-  { id: 'gpt-4o-mini',                 short: 'GPT-4o mini', name: 'GPT-4o mini',         api: 'openai',    key: 'OPENAI_API_KEY'    },
-];
+// ─── Model helpers ────────────────────────────────────────────────────────────
+
+// Add entries here for any model you use frequently.
+const KNOWN = {
+  'claude-haiku-3-5-20241022':  { name: 'Claude Haiku 3.5',  short: 'Haiku 3.5',   api: 'anthropic', key: 'ANTHROPIC_API_KEY' },
+  'claude-sonnet-4-5-20251201': { name: 'Claude Sonnet 4.5', short: 'Sonnet 4.5',  api: 'anthropic', key: 'ANTHROPIC_API_KEY' },
+  'claude-opus-4-5-20251201':   { name: 'Claude Opus 4.5',   short: 'Opus 4.5',    api: 'anthropic', key: 'ANTHROPIC_API_KEY' },
+  'gpt-4o-mini':                { name: 'GPT-4o mini',       short: 'GPT-4o mini', api: 'openai',    key: 'OPENAI_API_KEY'    },
+  'gpt-4o':                     { name: 'GPT-4o',            short: 'GPT-4o',      api: 'openai',    key: 'OPENAI_API_KEY'    },
+  'gpt-4.1':                    { name: 'GPT-4.1',           short: 'GPT-4.1',     api: 'openai',    key: 'OPENAI_API_KEY'    },
+  'o3-mini':                    { name: 'o3 mini',           short: 'o3 mini',     api: 'openai',    key: 'OPENAI_API_KEY'    },
+};
+
+function detectApi(id) {
+  if (id.startsWith('claude-')) return { api: 'anthropic', key: 'ANTHROPIC_API_KEY' };
+  if (/^(gpt-|o1-|o3-|o4-)/.test(id)) return { api: 'openai',    key: 'OPENAI_API_KEY'    };
+  if (id.startsWith('gemini-'))  return { api: 'google',    key: 'GOOGLE_API_KEY'    };
+  throw new Error(`Unknown provider for "${id}". Add it to KNOWN in run.js or extend detectApi().`);
+}
+
+function modelMeta(id) {
+  if (KNOWN[id]) return { id, ...KNOWN[id] };
+  const { api, key } = detectApi(id);
+  // auto-generate display name: strip date suffix, title-case
+  const name = id.replace(/-\d{8}$/, '').replace(/-/g, ' ')
+    .replace(/\b(\w)/g, c => c.toUpperCase());
+  return { id, name, short: name, api, key };
+}
+
+const DEFAULT_IDS = (process.env.MODELS || 'claude-haiku-3-5-20241022,claude-sonnet-4-5-20251201,gpt-4o-mini').split(',');
+const MODEL_IDS   = process.argv.slice(2).length ? process.argv.slice(2) : DEFAULT_IDS;
+const MODELS      = MODEL_IDS.map(modelMeta);
 
 // ─── API callers ──────────────────────────────────────────────────────────────
 
