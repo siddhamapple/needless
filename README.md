@@ -7,6 +7,23 @@ must justify its existence.
 
 ---
 
+## Numbers
+
+Four everyday tasks, before and after needless. Line counts from the actual
+[examples/](examples/) in this repo. Reproduce: `node scripts/compare.js`
+
+| Example      | Before | After | Reduction |
+|--------------|-------:|------:|----------:|
+| debounce     |     30 |     4 |      -87% |
+| deep-clone   |     14 |     2 |      -86% |
+| number-format|     17 |     5 |      -71% |
+| uuid         |     19 |     2 |      -89% |
+| **Average**  |        |       |  **-83%** |
+
+Every shortcut is marked with a `needless:` comment naming the upgrade path.
+
+---
+
 ## Before / after
 
 You ask for a cache class. Your agent writes a TTL cache with a lock, an
