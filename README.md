@@ -9,18 +9,28 @@ must justify its existence.
 
 ## Numbers
 
-Four everyday tasks, before and after needless. Line counts from the actual
-[examples/](examples/) in this repo. Reproduce: `node scripts/compare.js`
+Five tasks, three models, five runs per cell, median reported.
+Baseline: no instructions. Needless: ruleset injected as system prompt.
 
-| Example      | Before | After | Reduction |
-|--------------|-------:|------:|----------:|
-| debounce     |     30 |     4 |      -87% |
-| deep-clone   |     14 |     2 |      -86% |
-| number-format|     17 |     5 |      -71% |
-| uuid         |     19 |     2 |      -89% |
-| **Average**  |        |       |  **-83%** |
+**[View the full interactive benchmark chart](assets/benchmark.html)**
 
-Every shortcut is marked with a `needless:` comment naming the upgrade path.
+| Task | Haiku 3.5 (base) | Haiku 3.5 (needless) | Sonnet 4.5 (base) | Sonnet 4.5 (needless) | GPT-4o mini (base) | GPT-4o mini (needless) |
+|---|---:|---:|---:|---:|---:|---:|
+| isPrime(n) | 20 | 3 | 26 | 3 | 23 | 4 |
+| formatPhone(s) | 32 | 3 | 44 | 3 | 37 | 4 |
+| truncate(s,n) | 12 | 2 | 17 | 1 | 14 | 2 |
+| shuffle(arr) | 24 | 5 | 30 | 5 | 27 | 5 |
+| average(nums) | 15 | 2 | 20 | 1 | 18 | 2 |
+| **Avg reduction** | | **-85%** | | **-91%** | | **-86%** |
+
+Reproduce it yourself:
+
+```bash
+cp .env.example .env   # add your API keys
+npm run benchmark      # runs tasks, saves results, regenerates chart
+```
+
+Every shortcut the agent takes is marked with a `needless:` comment naming the upgrade path.
 
 ---
 

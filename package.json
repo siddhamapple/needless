@@ -8,5 +8,10 @@
     "type": "git",
     "url": "https://github.com/siddhamapple/needless.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "benchmark": "node benchmarks/run.js",
+    "chart": "node benchmarks/chart.js",
+    "compare": "node scripts/compare.js"
+  }
 }
